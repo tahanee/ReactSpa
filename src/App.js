@@ -1,21 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router';
+import { Layout } from './components/Layout';
+import { QandAmodule } from './components/QandAmodule';
+import {QandAList} from './components/QandAList';
+import {QnASubmission} from './components/QnASubmission';
+import {SkillSetNavigator} from './components/SkillSetNavigator';
+import {AddSkills} from './components/AddSkills'; 
+import {SkillsetsModule} from './components/SkillsetsModule';
+import {CandidateModule} from './components/FCandidateModule';
+import {RequestRequisitionModule} from './components/RequestRequisitionModule';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+
+export default class App extends Component {
+  displayName = App.name
+
+  render() 
+  {
+    return(
+      <Layout>
+        <Route exact path='/' component={QandAmodule} />        
+        <Route path='/qna' component={QandAList}/>        
+        <Route path='/qnasub' component={QnASubmission}/> 
+        <Route path='/skills_tree' component={SkillSetNavigator}/> 
+        <Route path='/add_skills' component={AddSkills}/>     
+        <Route path='/skills_module' component={SkillsetsModule}/>
+        <Route path='/jobs_module' component={RequestRequisitionModule}/> 
+        <Route path='/candidate_module' component={CandidateModule}/> 
+      </Layout>
+      
     );
   }
 }
-
-export default App;
